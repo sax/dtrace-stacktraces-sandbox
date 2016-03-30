@@ -17,9 +17,14 @@ cd /vagrant/dtrace-stacktrace-sandbox
 ./setup_zone
 ```
 
-This is likely to be **very** slow, as many packages are downloaded from the other
-side of country with severe bandwidth limiting. Once this is finished, you can
-make a local dataset out of the running zone.
+Note that at the end of `vagrant up` it attempts to rsync the local directory
+and the `dtrace-stacktraces` working directory into the zone. This often fails,
+but after all the networking stabilizes in the VM you can sync as described
+below.
+
+Setting up the zone is likely to be **very** slow, as many packages are
+downloaded from the other side of country with severe bandwidth limiting. Once
+this is finished, you can make a local dataset out of the running zone.
 
 ```
 vagrant dataset create ruby-dtrace-sandbox ruby-dtrace-sandbox
