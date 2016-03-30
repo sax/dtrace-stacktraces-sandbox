@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+sudo pkgin -y in ruby git build-essential
+sudo gem install rake --no-ri --no-rdoc
+sudo gem install bundler --no-ri --no-rdoc

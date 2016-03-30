@@ -1,0 +1,19 @@
+PATH
+  remote: ../../dtrace-stacktraces
+  specs:
+    dtrace-stacktraces (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ruby-usdt (0.2.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dtrace-stacktraces!
+  ruby-usdt
+
+BUNDLED WITH
+   1.11.2

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+PRIVATE_KEY="${HOME}/.vagrant.d/insecure_private_key"
+SANDBOX="$(dirname $0)"
+GEM="${SANDBOX}/../dtrace-stacktraces/"
+
+rsync --verbose -rlpgoD --delete -z --copy-links --no-owner --no-group \
+  --rsync-path 'pfexec rsync' \
+  -e "ssh -p 2222 -o StrictHostKeyChecking=no -o IdentitiesOnly=true \
+    -o UserKnownHostsFile=/dev/null -i ${PRIVATE_KEY}" \
+  --exclude .vagrant/ ${SANDBOX} \
+  vagrant@127.0.0.1:/vagrant/dtrace-stacktrace-sandbox/
+
+rsync --verbose -rlpgoD --delete -z --copy-links --no-owner --no-group \
+  --rsync-path 'pfexec rsync' \
+  -e "ssh -p 2222 -o StrictHostKeyChecking=no -o IdentitiesOnly=true \
+    -o UserKnownHostsFile=/dev/null -i ${PRIVATE_KEY}" \
+  --exclude .vagrant/ ${GEM} \
+  vagrant@127.0.0.1:/vagrant/dtrace-stacktraces/
+
+ssh -i "${PRIVATE_KEY}" -p 2222 vagrant@127.0.0.1 -t sudo chown -R vagrant:vagrant /vagrant
+

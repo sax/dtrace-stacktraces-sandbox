@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set +e
+
+pushd ..
+  pushd dtrace-stacktraces
+    bundle --path /vagrant/.bundle
+    bundle exec rake compile
+  popd
+
+  pushd dtrace-stacktrace-sandbox/runner
+    bundle --path /vagrant/.bundle
+    bundle exec ruby run.rb
+  popd
+popd

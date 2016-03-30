@@ -1,0 +1,6 @@
+# A sample Gemfile
+source "https://rubygems.org"
+
+gem 'dtrace-stacktraces', path: '../../dtrace-stacktraces'
+gem 'ruby-usdt', submodules: true
+# gem 'ruby-usdt', path: '../ruby-usdt', submodules: true

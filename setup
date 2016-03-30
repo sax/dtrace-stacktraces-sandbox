@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set +e
+
+if [[ ! -d ../dtrace-stacktraces ]]; then
+  git clone https://github.com/sax/dtrace-stacktraces.git ../dtrace-stacktraces
+end
+
+vagrant plugin install vagrant-smartos-zones
